@@ -1,0 +1,12 @@
+services:
+  app:
+    build: .
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_QPA_PLATFORM=xcb # offscreen, wayland-egl, vkkhrdisplay, vnc, minimalegl, minimal, linuxfb, wayland, eglfs, xcb
+#    ports:
+#      - 5900:5900 # VNC server port
+    volumes:
+      - .:/opt/project
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    entrypoint: python3 main.py
