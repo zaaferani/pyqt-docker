@@ -20,6 +20,26 @@ docker-compose up app
 docker-compose up designer
 ```
 
+#### Run with Docker hub image
+```bash
+docker run -it --rm \
+  -e DISPLAY=$DISPLAY \
+  -e QT_QPA_PLATFORM=xcb \
+  -v /tmp/.X11-unix:/tmp/.X11-unix \
+  -v $(pwd):/opt/project \
+  zaaferani/pyqt-designer:latest pyqt6-tools designer
+```
+
+#### Convert ui to py file
+```bash
+docker run -it --rm \
+  -e DISPLAY=$DISPLAY \
+  -e QT_QPA_PLATFORM=xcb  \
+  -v /tmp/.X11-unix:/tmp/.X11-unix \
+  -v $(pwd):/opt/project \
+  zaaferani/pyqt-designer:latest pyuic6 -x -o main.py main.ui
+```
+
 #### Close Connection to X Server (After Usage)
 Once you’re done using the GUI application, close the connection to the X server:
 ```bash

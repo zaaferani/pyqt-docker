@@ -37,6 +37,10 @@ COPY requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
+CMD ["python3", "-u", "main.py"]
+
 FROM base as designer
 
 RUN pip install pyqt6-tools~=6.4
+
+CMD ["pyqt6-tools", "designer"]
