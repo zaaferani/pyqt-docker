@@ -12,7 +12,12 @@ xhost +local:docker
 
 ### Run
 ```bash
-docker-compose up
+docker-compose up app
+```
+
+### Run PyQT Designer
+```bash
+docker-compose up designer
 ```
 
 #### Close Connection to X Server (After Usage)

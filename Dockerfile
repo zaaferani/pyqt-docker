@@ -31,9 +31,12 @@ RUN apt-get update && apt-get install -y libfontconfig1
 
 RUN apt-get update && apt-get install -y libglib2.0-0
 
-
 FROM base as builder
 
 COPY requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
+
+FROM base as designer
+
+RUN pip install pyqt6-tools~=6.4

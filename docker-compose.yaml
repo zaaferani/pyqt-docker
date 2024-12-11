@@ -1,6 +1,8 @@
 services:
   app:
-    build: .
+    build:
+      context: .
+      target: builder
     environment:
       - DISPLAY=${DISPLAY}
       - QT_QPA_PLATFORM=xcb # offscreen, wayland-egl, vkkhrdisplay, vnc, minimalegl, minimal, linuxfb, wayland, eglfs, xcb
@@ -10,3 +12,15 @@ services:
       - .:/opt/project
       - /tmp/.X11-unix:/tmp/.X11-unix
     entrypoint: python3 main.py
+
+  qt-designer:
+    build:
+      context: .
+      target: designer
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_QPA_PLATFORM=xcb
+    volumes:
+      - ./:/opt/project
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    entrypoint: pyqt6-tools designer
